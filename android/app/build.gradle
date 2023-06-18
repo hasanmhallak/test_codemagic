@@ -63,7 +63,7 @@ if (keystorePropertiesFile.exists()) {
    signingConfigs {
         release {
             //From decoded key
-            storeFile = file('upload.jks')
+            storeFile = file('../upload.jks')
             
             //From key.properties
             keyAlias keystoreProperties['keyAlias']
