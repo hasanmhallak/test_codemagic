@@ -10,7 +10,7 @@ on:
 
 env:
   JAVA_VERSION: "11.x"
-  FLUTTER_VERSION: "3.10.0"
+  FLUTTER_VERSION: "3.10.1"
   FLUTTER_CHANNEL: "stable"
   PROPERTIES_PATH: "./android/key.properties"
   KEY_PATH: "./android/upload.jks"
