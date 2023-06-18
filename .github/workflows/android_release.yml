@@ -25,13 +25,13 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: ${{JAVA_VERSION}}
+          java-version: ${{env.JAVA_VERSION}}
           cache: "gradle"
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{FLUTTER_VERSION}}
-          channel: ${{FLUTTER_CHANNEL}}
+          flutter-version: ${{env.FLUTTER_VERSION}}
+          channel: ${{env.FLUTTER_CHANNEL}}
           cache: true
 
       - name: Resolve dependencies
@@ -42,12 +42,12 @@ jobs:
 
       - name: Create Signing Key Secrets
         run: |
-          echo keyAlias=${{secrets.KEY_ALIAS}} > ${{PROPERTIES_PATH}}
-          echo keyPassword=${{secrets.KEY_PASS}} >> ${{PROPERTIES_PATH}}
-          echo storePassword=${{secrets.KEY_STORE_PASS}} >> ${{PROPERTIES_PATH}}
+          echo keyAlias=${{secrets.KEY_ALIAS}} > ${{env.PROPERTIES_PATH}}
+          echo keyPassword=${{secrets.KEY_PASS}} >> ${{env.PROPERTIES_PATH}}
+          echo storePassword=${{secrets.KEY_STORE_PASS}} >> ${{env.PROPERTIES_PATH}}
 
       - name: Decode Signing Key
-        run: echo '${{secrets.KEY}}' | base64 --decode > ${{KEY_PATH}}
+        run: echo '${{secrets.KEY}}' | base64 --decode > ${{env.KEY_PATH}}
 
       - name: Build APK
         run: flutter build apk --release
