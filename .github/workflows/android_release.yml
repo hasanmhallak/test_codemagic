@@ -59,9 +59,10 @@ jobs:
       #     path: build/app/outputs/flutter-apk/app-release.apk
 
       - name: Get Version Number
+        id: version
         run: |
           VERSION=`cat pubspec.yaml | grep -o '^version: .*' | cut -f2 -d":" | cut -f1 -d"+" | xargs`
           echo "version=$VERSION >> GITHUB_OUTPUT"
 
       - name: print
-        run: echo "${{steps.${{Get Version Number}}.outputs.version}}"
+        run: echo "${{steps.version.outputs.version}}"
