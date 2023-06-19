@@ -62,7 +62,7 @@ jobs:
         id: version
         run: |
           VERSION=`cat pubspec.yaml | grep -o '^version: .*' | cut -f2 -d":" | cut -f1 -d"+" | xargs`
-          echo "version=$VERSION >> $GITHUB_OUTPUT"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: print
         run: echo "${{steps.version.outputs.version}}"
