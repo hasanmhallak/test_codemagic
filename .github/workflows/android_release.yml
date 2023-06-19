@@ -15,6 +15,9 @@ env:
   PROPERTIES_PATH: "./android/key.properties"
   KEY_PATH: "./android/upload.jks"
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
